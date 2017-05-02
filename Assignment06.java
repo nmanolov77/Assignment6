@@ -13,7 +13,7 @@ import java.util.Stack;
  */
 public class Assignment06 {
 
-    Stack<Integer> pathStack;
+    Stack<Integer> pathStack = new Stack();
 //int[] visitedCities = new int[];
     int[][] adjacency;
     int CITI;//number of cities
@@ -23,18 +23,13 @@ public class Assignment06 {
 
     public Assignment06(int N) {
         CITI = N;
-
-        int[] visitedCities = new int[CITI];
+        
         adjacency = new int[N][N];
-        visitedCities[0] = 0;
-        pathStack.push(visitedCities[0]);
-        closestCity = 0;
-        minFlag = false;
-        System.out.println("Starting city is : " + visitedCities[0]);
+      
     }//Lab04
 
     public void populateMatrix() throws FileNotFoundException {
-        File f = new File("tsp12.txt");
+        File f = new File("tsp19.txt");
         //try {
         Scanner input = new Scanner(f);
         int value, i, j;
@@ -57,13 +52,13 @@ public class Assignment06 {
 
     public void tsp() {
         int[] visitedCities = new int[CITI];
-        adjacency = new int[CITI][CITI];
         visitedCities[0] = 0;
         pathStack.push(visitedCities[0]);
         closestCity = 0;
         minFlag = false;
         pathStack.push(1);
-
+        System.out.println("Starting city is : " + visitedCities[0]);
+        
         int element = 0;
         int i = 0;
         closestCity = 0;
@@ -83,6 +78,7 @@ public class Assignment06 {
                         min = adjacency[element][i];
                         closestCity = i;
                         minFlag = true;
+                        
                     }
                 }
                 i++;
@@ -102,7 +98,7 @@ public class Assignment06 {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws FileNotFoundException {
-        Assignment06 a = new Assignment06(12);
+        Assignment06 a = new Assignment06(19);
         a.populateMatrix();
         a.tsp();
     }
