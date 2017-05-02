@@ -1,0 +1,87 @@
+package pa6;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.util.*;
+import java.io.*;
+ 
+public class Pa6{
+    
+    int numberOfTokens = 0;
+    Stack<Integer> pathStack;
+    int CITI = 12;
+    int[][] adjacencyMatrix;
+ 
+    public Pa6(){
+    }
+    
+    public void populateMatrix() { //CITI is the number of cities and it is a constant
+        String a = "1";
+        
+        File f = new File("tsp12.txt");
+        try {
+            Scanner input = new Scanner(f);
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    if(adjacency[i] == adjacency[j])
+                }
+            }
+        } catch (Exception IOException) {
+            IOException.printStackTrace();
+            System.out.println("*File Not Found! ");
+        }
+    }//populateMatrix
+
+ 
+    public void tsp(){
+        numberOfTokens = adjacencyMatrix[1].length - 1;
+        int[] visitedCities = new int[numberOfTokens + 1];
+        visitedCities[1] = 1;
+        pathStack.push(1);
+        int element, closestCity = 0, i;
+        int min = Integer.MAX_VALUE;
+        boolean minFlag = false;
+        System.out.print(1 + "\t");
+ 
+        while (!pathStack.isEmpty())
+        {
+            element = pathStack.peek();
+            i = 1;
+            min = Integer.MAX_VALUE;
+            for (int j = 0; j <= numberOfTokens; j++) {//forJ
+                if (adjacencyMatrix[element][i] > 1 && visitedCities[i] == 0)
+                {
+                    if (min > adjacencyMatrix[element][i])
+                    {
+                        min = adjacencyMatrix[element][i];
+                        closestCity = i;
+                        minFlag = true;
+                    }
+                }
+                i++;
+            }//forJ
+            if (minFlag)
+            {
+                visitedCities[closestCity] = 1;
+                pathStack.push(closestCity);
+                System.out.print(closestCity + "\t");
+                minFlag = false;
+                continue;
+            }
+            pathStack.pop();
+        }
+    }
+ 
+    public static void main(String[] args) {
+      // Scanner input = new Scanner(System.in);
+        
+        Pa6 pa6 = new Pa6();
+        pa6.populateMatrix();
+//        System.out.println("Please enter the number of cities");
+//        CITI = input.nextInt();
+        
+        //pa6.tsp();
+        
+        
+    }
+}
