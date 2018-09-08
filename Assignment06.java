@@ -9,7 +9,7 @@ import java.util.Stack;
 
 /**
  *
- * @author Martin
+ * @author Nick Manolov
  */
 public class Assignment06 {
 
